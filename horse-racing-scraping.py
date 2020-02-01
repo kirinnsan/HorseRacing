@@ -42,6 +42,7 @@ def send_from(start, end):
     form.submit()
 
 
+# HTMLを解析
 def parse_data():
 
     tr_list = chrome.find_elements_by_css_selector('.race_table_01 tbody tr')
@@ -71,6 +72,7 @@ def parse_data():
     return save_list
 
 
+# ファイル書き込み
 def write_file(result_rows):
     with open('keiba.csv', 'a', encoding='utf-8', newline='') as f:
         csv_writer = csv.writer(f)
