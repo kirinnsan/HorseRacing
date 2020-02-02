@@ -7,7 +7,7 @@ import csv
 import os
 
 URL = 'https://db.netkeiba.com/?pid=race_search_detail'
-YEAR = ('2015', '2016', '2017', '2018', '2019', '2020')
+YEAR = ('2015', '2016', '2017', '2018', '2019')
 
 # Chromeオプションのオブジェクト作成
 options = ChromeOptions()
@@ -21,16 +21,22 @@ chrome = Chrome(options=options)
 def send_from(start, end):
     # 期間のセレクトボックス取得(開始年)
     start_year = chrome.find_element_by_name('start_year')
-    # 値設定
     start_year.send_keys(start)
+
+    # 期間のセレクトボックス取得(開始月)
+    start_month = chrome.find_element_by_name('start_mon')
+    start_month.send_keys('1')
 
     # # 期間のセレクトボックス取得(終了年)
     end_year = chrome.find_element_by_name('end_year')
-    # 値設定
     end_year.send_keys(end)
 
+    # # 期間のセレクトボックス取得(終了年)
+    end＿month = chrome.find_element_by_name('end_mon')
+    end＿month.send_keys('12')
+
+    # 競馬場のチェックボックス
     place = chrome.find_element_by_id('check_Jyo_09')
-    # チェック
     place.click()
 
     # フォームの要素取得
@@ -82,13 +88,13 @@ def write_file(result_rows):
 
 if __name__ == '__main__':
 
-    for i in range(len(YEAR)-1):
+    for i in range(len(YEAR)):
 
         # 検索ページ
         chrome.get(URL)
 
         # 検索
-        send_from(YEAR[i], YEAR[i+1])
+        send_from(YEAR[i], YEAR[i])
 
         page_index = 0
 
