@@ -208,7 +208,7 @@ def read_file(file_name):
         return f.readlines()
 
 
-# レース結果のurlを保存する
+# レース結果のurlをテキストファイルに保存する
 def save_rece_result_url():
 
     for i in range(len(YEAR)):
@@ -266,6 +266,6 @@ def make_csv_for_race_result():
 
 if __name__ == '__main__':
 
-    # save_rece_result_url()
+    save_rece_result_url()
 
     make_csv_for_race_result()
