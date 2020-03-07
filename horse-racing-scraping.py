@@ -84,9 +84,8 @@ def send_from(start, end):
     # フォーム送信
     form.submit()
 
+
 # レース情報を取得する
-
-
 def parse_race_info():
     reace_info = chrome.find_element_by_css_selector(
         '.racedata.fc dd p diary_snap_cut span')
@@ -114,9 +113,8 @@ def parse_race_info():
 
     return race_info_list
 
+
 # レース結果ページURLを取得する
-
-
 def parse_race_result_url(file_name):
 
     # 検索結果テーブルの行全て取得
@@ -133,9 +131,8 @@ def parse_race_result_url(file_name):
 
     return race_result_url_list
 
+
 # レース結果ページを解析する
-
-
 def parse_race_result_data(url, save_file_name):
 
     result_race_data_list = []
@@ -188,21 +185,21 @@ def parse_race_result_data(url, save_file_name):
     return result_race_data_list
 
 
-# ファイル書き込み
+# テキストファイル書き込み
 def write_file(url, file_name):
     with open(file_name, 'a', encoding='utf-8') as f:
         # 書き込み
         f.write('\n'.join(url)+'\n')
 
 
-# ファイル読み込み
+# csvファイル書き込み
 def write_csv_file(result_rows, file_name):
     with open(file_name, 'a', encoding='utf-8', newline='') as f:
         csv_writer = csv.writer(f)
         # 書き込み
         csv_writer.writerows(result_rows)
 
-
+# ファイル読み込み
 def read_file(file_name):
     with open(file_name, 'r', encoding='utf-8', newline='') as f:
         return f.readlines()
@@ -266,6 +263,6 @@ def make_csv_for_race_result():
 
 if __name__ == '__main__':
 
-    save_rece_result_url()
+    # save_rece_result_url()
 
     make_csv_for_race_result()
