@@ -11,7 +11,8 @@ import os
 
 
 URL = 'https://db.netkeiba.com/?pid=race_search_detail'
-YEAR = ('2015', '2016', '2017', '2018', '2019')
+YEAR = ('2018', '2019')
+# YEAR = ('2015', '2016', '2017', '2018', '2019')
 CHECKBOX_PLACE = 'check_Jyo_09'
 RETRY_COUNT = 3
 CSV_HEADER = ['date',                # 日付'         # ↓レース情報↓
@@ -45,7 +46,7 @@ CSV_HEADER = ['date',                # 日付'         # ↓レース情報↓
 # Chromeオプションのオブジェクト作成
 options = ChromeOptions()
 # ヘッドレス設定
-options.add_argument('-headless')
+# options.add_argument('-headless')
 # Chrome起動
 chrome = Chrome(options=options)
 
@@ -247,11 +248,8 @@ def save_rece_result_url():
 # レース結果のcsvファイルを作成する
 def make_csv_for_race_result():
 
-    # file_name_list = []
-
     for i in range(len(YEAR)):
         file_name = 'keiba_{}_{}_url.txt'.format('阪神', YEAR[i])
-        # for file_name in file_name_list:
         url_list = read_file(file_name)
         result_rows = None
         save_file_name = file_name.replace('_url.txt','.csv')
